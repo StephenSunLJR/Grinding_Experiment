@@ -1,0 +1,48 @@
+icvs:
+    type: variable_stiffness_controllers/icvs
+    arm_id: panda
+    joint_names:
+        - panda_joint1
+        - panda_joint2
+        - panda_joint3
+        - panda_joint4
+        - panda_joint5
+        - panda_joint6
+        - panda_joint7
+
+
+icvs:
+    type: variable_stiffness_controllers/icvs
+    arm_id: panda
+    joint_names:
+        - panda_joint1
+        - panda_joint2
+        - panda_joint3
+        - panda_joint4
+        - panda_joint5
+        - panda_joint6
+        - panda_joint7
+    xt: 14.0
+    kc: 100.0
+    kt: 0.0
+    ktmax: 1000.0
+    ktmin: 10.0
+    min_tank_level: 0.1
+    max_tank_level: 100.0
+    sigma: 1.0  
+    
+    
+
+
+
+
+
+        
+
+    
+
+
+
+
+
+        

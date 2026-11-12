@@ -1,0 +1,55 @@
+{
+  "input_csv": "/home/franka/.ros/bidirectional_logs/bidirectional_20261111_163217_049766_run2.csv",
+  "model": "Panda xacro Gazebo identified inertias, panda_link8, hand=false, no tool load; NOT Franka internal model",
+  "source_initial_q": [
+    0.013209724899316043,
+    -0.7832048651210047,
+    -0.002213909466685943,
+    -2.3573746882060336,
+    -0.020255415898231256,
+    1.5720502424631713,
+    0.8199096609279513
+  ],
+  "source_initial_dq": [
+    -0.001082998728467009,
+    0.0007419001286568286,
+    -0.0007148726225095368,
+    -0.0009180353634642264,
+    -0.00042131230015209406,
+    0.00020257844196457602,
+    -0.0008653388351675553
+  ],
+  "mass_eigenvalues": [
+    0.004659455021903855,
+    0.019816429580546514,
+    0.02648414246384247,
+    0.2192078292472812,
+    0.44182261032022185,
+    1.1216517415322362,
+    1.802255341536815
+  ],
+  "generalized_damping_eigenvalues": [
+    -6.949999424686889e-15,
+    0.9269337773498698,
+    2.4271856627188977,
+    2.7723258356771416,
+    150.91357376856766,
+    169.2856973055229,
+    842.8622933236792
+  ],
+  "warning": "Approximation uses no measured F_T_EE or load from this run; does not validate hardware control.",
+  "count": 125,
+  "default_case": {
+    "stiffness_scale": 1.0,
+    "damping_scale": 1.0,
+    "dt": 0.001,
+    "linear_rho": 0.9995364256607415,
+    "dominant_real": 0.9995318984424388,
+    "dominant_imag": 0.0030083581411300417,
+    "linear_unstable": false,
+    "nonlinear_time": 0.2,
+    "final_or_stop_max_joint_speed": 0.0005944356043136421,
+    "joint7_sign_changes": 0,
+    "nonlinear_speed_over_50": false
+  }
+}

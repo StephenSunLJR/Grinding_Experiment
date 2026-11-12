@@ -1,0 +1,63 @@
+<library path="lib/libvariable_stiffness_controllers">
+  <class name="variable_stiffness_controllers/icvs" type="variable_stiffness_controllers::icvs" base_class_type="controller_interface::ControllerBase">
+    <description>
+      A VariableStiffness Passive Interaction control with Dynamical Systems. 
+    </description>
+  </class>
+   <class name="variable_stiffness_controllers/icvs_emg" type="variable_stiffness_controllers::icvs_emg" base_class_type="controller_interface::ControllerBase">
+    <description>
+      A VariableStiffness EMG control with Dynamical Systems. 
+    </description>
+  </class>
+  <class name="variable_stiffness_controllers/standardimpedance" type="variable_stiffness_controllers::standardimpedance" base_class_type="controller_interface::ControllerBase">
+    <description>
+      A standardimpedance EMG control with Dynamical Systems. 
+    </description>
+  </class> 
+  <class name="variable_stiffness_controllers/Calculate_torque" type="variable_stiffness_controllers::Calculate_torque" base_class_type="controller_interface::ControllerBase">
+    <description>
+      A standardimpedance EMG control with Dynamical Systems. 
+    </description>
+  </class>
+    <class name="variable_stiffness_controllers/icvs_smooth" type="variable_stiffness_controllers::icvs_smooth" base_class_type="controller_interface::ControllerBase">
+    <description>
+      A standardimpedance EMG control with Dynamical Systems. 
+    </description>
+  </class>
+  <class name="variable_stiffness_controllers/icvs_energy" type="variable_stiffness_controllers::icvs_energy" base_class_type="controller_interface::ControllerBase">
+    <description>
+      A standardimpedance EMG control with Dynamical Systems. 
+    </description>
+  </class>
+  <class name="interactive_force_impedence_control/interactive_control" type="interactive_force_impedence_control::interactive_control" base_class_type="controller_interface::ControllerBase">
+  <description>
+  A interactive force-impedance controller.
+  </description>
+  </class>
+  <class name="variable_stiffness_controllers/icvs_energy_mujoco" type="variable_stiffness_controllers::IcvsEnergyMujoco" base_class_type="controller_interface::ControllerBase">
+  <description>
+  Mujoco compatible variant of the ICVS Energy controller.
+  </description>
+  </class>
+  <class name="variable_stiffness_controllers/ADLSController" type="variable_stiffness_controllers::ADLSController" base_class_type="controller_interface::ControllerBase">
+  <description>
+  Anisotropic Damped Least Squares (A-DLS) controller.
+  Implements direction-selective compliance based on GMO collision detection
+  for 7-DOF redundant manipulators (Franka Emika Panda).
+  Supports 4 comparison methods: M1 (Moore-Penrose), M2 (Scalar DLS),
+  M3 (Null-space only), M4 (A-DLS proposed).
+  Paper: "各向异性自适应任务分级与柔顺控制" v5.10.
+  </description>
+  </class>
+  <class name="variable_stiffness_controllers/BidirectionalEnergyFlowControl" type="variable_stiffness_controllers::BidirectionalEnergyFlowControlMain" base_class_type="controller_interface::ControllerBase">
+  <description>
+  Bidirectional energy-flow passive admittance controller with joint-torque output.
+  </description>
+  </class>
+  <class name="variable_stiffness_controllers/PureJointPositionHoldController" type="variable_stiffness_controllers::PureJointPositionHoldController" base_class_type="controller_interface::ControllerBase">
+  <description>
+  Holds the joint positions captured at controller start through Franka's position joint interface. No force feedback is used by the controller plugin.
+  </description>
+  </class>
+
+</library>

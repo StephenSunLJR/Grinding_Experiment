@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="config_file"
+       default="$(find hps_ft_sensor)/config/hps_ft_sensor.yaml"/>
+  <rosparam command="load" file="$(arg config_file)"/>
+  <node pkg="hps_ft_sensor"
+        type="hps_wrench_publisher"
+        name="hps_wrench_publisher"
+        output="screen"
+        respawn="false"/>
+</launch>

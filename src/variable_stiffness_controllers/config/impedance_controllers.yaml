@@ -1,0 +1,13 @@
+icvs:
+    type: impedance_controllers/JointImpedanceController
+    xt: 0.5
+    kc: 10.0
+    min_tank_level: 0.05
+    max_tank_level: 1
+    sigma: 0.1     
+
+
+
+
+
+        

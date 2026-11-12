@@ -1,0 +1,65 @@
+bidirectional_energy_flow_control:
+  type: variable_stiffness_controllers/BidirectionalEnergyFlowControl
+  arm_id: panda
+  joint_names:
+    - panda_joint1
+    - panda_joint2
+    - panda_joint3
+    - panda_joint4
+    - panda_joint5
+    - panda_joint6
+    - panda_joint7
+
+  # Independent HPS six-axis F/T sensor. The publisher shifts the wrench to
+  # the end-effector origin; the business layer rotates it to panda_link0 each
+  # control period using the current Franka O_T_EE transform.
+
+  external_wrench_topic: /ft_sensor/wrench
+  external_wrench_frame: panda_EE
+  external_wrench_in_end_effector_frame: true
+  external_wrench_timeout: 0.02
+  
+  # The algorithm requires the environment-on-robot sign convention. Change
+  # this to -1.0 if a verified push test shows the opposite sensor convention.
+  external_wrench_sign: 1.0
+  require_external_wrench: true
+
+  # Until the first target message arrives, starting() holds the current pose.
+  target_pose_topic: target_pose
+  target_pose_frame: panda_link0
+
+  # Lee et al., experiment 1, extended to Franka joint 7.
+  lambda: 1.0
+  task_stiffness: [400.0, 400.0, 400.0, 50.0, 50.0, 50.0]
+  task_damping: [50.0, 50.0, 50.0, 1.0, 1.0, 1.0]
+  tracking_velocity_gain: [20.0, 20.0, 20.0, 10.0, 10.0, 10.0, 10.0]
+  tracking_position_gain: [10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0]
+  tracking_integral_gain: [5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0]
+  tracking_integral_limit: [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+
+  # Hold the joint posture captured when the controller starts, projected into
+  # the dynamically consistent null space of the Cartesian task.
+  nullspace_stiffness: [10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0]
+  nullspace_damping: [6.3249, 6.3249, 6.3249, 6.3249, 6.3249, 6.3249, 6.3249]
+  nullspace_projection_damping: 0.01
+
+  # The paper recommends T_bar around 1 and 0 < T_lower < T_bar, but does not
+  # publish one unique experimental pair.
+  tank_initial_energy: 1.0
+  tank_lower_bound: 0.1
+  tank_upper_bound: 1.0
+  filter_alpha: false
+  alpha_filter_cutoff: 20.0
+
+  # Project safety defaults, not gains reported by the paper.
+  maximum_torque_step: 1.0
+  absolute_torque_limit: [30.0, 30.0, 30.0, 30.0, 8.0, 8.0, 8.0]
+
+  # Graceful Ctrl+C return controller. The initial position is captured in
+  # starting(). A quintic reference returns there before roslaunch is stopped.
+  safe_return_duration: 5.0
+  safe_return_position_gain: [40.0, 40.0, 40.0, 35.0, 20.0, 15.0, 10.0]
+  safe_return_velocity_gain: [8.0, 8.0, 8.0, 7.0, 5.0, 4.0, 3.0]
+  safe_return_position_tolerance: 0.02
+  safe_return_velocity_tolerance: 0.05
+  safe_return_settle_time: 0.5

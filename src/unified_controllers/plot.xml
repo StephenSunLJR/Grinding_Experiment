@@ -1,0 +1,374 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<root>
+ <tabbed_widget name="Main Window" parent="main_window">
+  <Tab tab_name="tab1" containers="1">
+   <Container>
+    <DockSplitter sizes="0.500401;0.499599" orientation="-" count="2">
+     <DockSplitter sizes="0.333496;0.333009;0.333496" orientation="|" count="3">
+      <DockArea name="...">
+       <plot mode="TimeSeries" flip_x="false" flip_y="false" style="Lines">
+        <range left="0.000000" right="69.502109" top="0.617144" bottom="0.602043"/>
+        <limitY/>
+        <curve name="/robotNewm/x" color="#1f77b4"/>
+        <curve name="/robotNewm/xd" color="#d62728"/>
+       </plot>
+      </DockArea>
+      <DockArea name="...">
+       <plot mode="TimeSeries" flip_x="false" flip_y="false" style="Lines">
+        <range left="0.000000" right="69.502109" top="0.108268" bottom="-0.238997"/>
+        <limitY/>
+        <curve name="/robotNewm/yd" color="#ff7f0e"/>
+        <curve name="/robotNewm/y" color="#f14cc1"/>
+       </plot>
+      </DockArea>
+      <DockArea name="...">
+       <plot mode="TimeSeries" flip_x="false" flip_y="false" style="Lines">
+        <range left="0.000000" right="69.502109" top="0.138817" bottom="0.107804"/>
+        <limitY/>
+        <curve name="/robotNewm/z" color="#17becf"/>
+        <curve name="/robotNewm/zd" color="#bcbd22"/>
+       </plot>
+      </DockArea>
+     </DockSplitter>
+     <DockSplitter sizes="0.334469;0.331061;0.334469" orientation="|" count="3">
+      <DockArea name="...">
+       <plot mode="TimeSeries" flip_x="false" flip_y="false" style="Lines">
+        <range left="0.000000" right="69.502109" top="0.005688" bottom="-0.009413"/>
+        <limitY/>
+        <curve name="/robotNewm/xerr" color="#1ac938"/>
+       </plot>
+      </DockArea>
+      <DockArea name="...">
+       <plot mode="TimeSeries" flip_x="false" flip_y="false" style="Lines">
+        <range left="0.000000" right="69.502109" top="0.010339" bottom="-0.014650"/>
+        <limitY/>
+        <curve name="/robotNewm/yerr" color="#9467bd"/>
+       </plot>
+      </DockArea>
+      <DockArea name="...">
+       <plot mode="TimeSeries" flip_x="false" flip_y="false" style="Lines">
+        <range left="0.000000" right="69.502109" top="0.005191" bottom="-0.008074"/>
+        <limitY/>
+        <curve name="/robotNewm/zerr" color="#1f77b4"/>
+       </plot>
+      </DockArea>
+     </DockSplitter>
+    </DockSplitter>
+   </Container>
+  </Tab>
+  <Tab tab_name="tab2" containers="1">
+   <Container>
+    <DockSplitter sizes="1" orientation="-" count="1">
+     <DockSplitter sizes="0.333496;0.333009;0.333496" orientation="|" count="3">
+      <DockSplitter sizes="0.500401;0.499599" orientation="-" count="2">
+       <DockArea name="...">
+        <plot mode="TimeSeries" flip_x="false" flip_y="false" style="Lines">
+         <range left="0.000000" right="69.502109" top="0.000963" bottom="-0.000878"/>
+         <limitY/>
+         <curve name="/robotNewm/alphaerr" color="#d62728"/>
+        </plot>
+       </DockArea>
+       <DockArea name="...">
+        <plot mode="TimeSeries" flip_x="false" flip_y="false" style="Lines">
+         <range left="0.000000" right="69.502109" top="1.000322" bottom="0.986806"/>
+         <limitY/>
+         <curve name="/robotNewm/alpha" color="#ff7f0e"/>
+         <curve name="/robotNewm/alphad" color="#f14cc1"/>
+        </plot>
+       </DockArea>
+      </DockSplitter>
+      <DockSplitter sizes="0.500401;0.499599" orientation="-" count="2">
+       <DockArea name="...">
+        <plot mode="TimeSeries" flip_x="false" flip_y="false" style="Lines">
+         <range left="0.000000" right="69.502109" top="0.003865" bottom="-0.002961"/>
+         <limitY/>
+         <curve name="/robotNewm/betaerr" color="#1ac938"/>
+        </plot>
+       </DockArea>
+       <DockArea name="...">
+        <plot mode="TimeSeries" flip_x="false" flip_y="false" style="Lines">
+         <range left="0.000000" right="69.502109" top="0.003865" bottom="-0.002961"/>
+         <limitY/>
+         <curve name="/robotNewm/beta" color="#9467bd"/>
+         <curve name="/robotNewm/betad" color="#17becf"/>
+        </plot>
+       </DockArea>
+      </DockSplitter>
+      <DockSplitter sizes="0.500401;0.499599" orientation="-" count="2">
+       <DockArea name="...">
+        <plot mode="TimeSeries" flip_x="false" flip_y="false" style="Lines">
+         <range left="0.000000" right="69.502109" top="0.003800" bottom="-0.003318"/>
+         <limitY/>
+         <curve name="/robotNewm/gammaerr" color="#ff7f0e"/>
+        </plot>
+       </DockArea>
+       <DockArea name="...">
+        <plot mode="TimeSeries" flip_x="false" flip_y="false" style="Lines">
+         <range left="0.000000" right="69.502109" top="0.003800" bottom="-0.003318"/>
+         <limitY/>
+         <curve name="/robotNewm/gamma" color="#bcbd22"/>
+         <curve name="/robotNewm/gammad" color="#1f77b4"/>
+        </plot>
+       </DockArea>
+      </DockSplitter>
+     </DockSplitter>
+    </DockSplitter>
+   </Container>
+  </Tab>
+  <Tab tab_name="tab2" containers="1">
+   <Container>
+    <DockSplitter sizes="0.500401;0.499599" orientation="-" count="2">
+     <DockArea name="...">
+      <plot mode="TimeSeries" flip_x="false" flip_y="false" style="Lines">
+       <range left="0.000000" right="69.502109" top="1.909567" bottom="-1.569387"/>
+       <limitY/>
+       <curve name="/robotNewm/ferr" color="#1f77b4"/>
+      </plot>
+     </DockArea>
+     <DockArea name="...">
+      <plot mode="TimeSeries" flip_x="false" flip_y="false" style="Lines">
+       <range left="0.000000" right="69.502109" top="11.909567" bottom="8.430613"/>
+       <limitY/>
+       <curve name="/robotNewm/fd" color="#d62728"/>
+       <curve name="/robotNewm/fext" color="#1ac938"/>
+      </plot>
+     </DockArea>
+    </DockSplitter>
+   </Container>
+  </Tab>
+  <Tab tab_name="tab2" containers="1">
+   <Container>
+    <DockSplitter sizes="0.333066;0.333868;0.333066" orientation="-" count="3">
+     <DockSplitter sizes="0.500243;0.499757" orientation="|" count="2">
+      <DockArea name="...">
+       <plot mode="TimeSeries" flip_x="false" flip_y="false" style="Lines">
+        <range left="0.000000" right="69.502109" top="0.100000" bottom="-0.100000"/>
+        <limitY/>
+        <curve name="/robotNewm/f_b_ext.0" color="#1f77b4"/>
+        <curve name="/robotNewm/f_d_ext.0" color="#17becf"/>
+       </plot>
+      </DockArea>
+      <DockArea name="...">
+       <plot mode="TimeSeries" flip_x="false" flip_y="false" style="Lines">
+        <range left="0.000000" right="69.502109" top="0.100000" bottom="-0.100000"/>
+        <limitY/>
+        <curve name="/robotNewm/f_b_ext.1" color="#d62728"/>
+        <curve name="/robotNewm/f_d_ext.1" color="#bcbd22"/>
+       </plot>
+      </DockArea>
+     </DockSplitter>
+     <DockSplitter sizes="0.502676;0.497324" orientation="|" count="2">
+      <DockArea name="...">
+       <plot mode="TimeSeries" flip_x="false" flip_y="false" style="Lines">
+        <range left="0.000000" right="69.502109" top="11.909567" bottom="8.430613"/>
+        <limitY/>
+        <curve name="/robotNewm/f_b_ext.2" color="#1ac938"/>
+        <curve name="/robotNewm/f_d_ext.2" color="#1f77b4"/>
+       </plot>
+      </DockArea>
+      <DockArea name="...">
+       <plot mode="TimeSeries" flip_x="false" flip_y="false" style="Lines">
+        <range left="0.000000" right="69.502109" top="0.100000" bottom="-0.100000"/>
+        <limitY/>
+        <curve name="/robotNewm/f_b_ext.3" color="#ff7f0e"/>
+        <curve name="/robotNewm/f_d_ext.3" color="#d62728"/>
+       </plot>
+      </DockArea>
+     </DockSplitter>
+     <DockSplitter sizes="0.502676;0.497324" orientation="|" count="2">
+      <DockArea name="...">
+       <plot mode="TimeSeries" flip_x="false" flip_y="false" style="Lines">
+        <range left="0.000000" right="69.502109" top="0.100000" bottom="-0.100000"/>
+        <limitY/>
+        <curve name="/robotNewm/f_b_ext.4" color="#f14cc1"/>
+        <curve name="/robotNewm/f_d_ext.4" color="#1ac938"/>
+       </plot>
+      </DockArea>
+      <DockArea name="...">
+       <plot mode="TimeSeries" flip_x="false" flip_y="false" style="Lines">
+        <range left="0.000000" right="69.502109" top="0.100000" bottom="-0.100000"/>
+        <limitY/>
+        <curve name="/robotNewm/f_b_ext.5" color="#9467bd"/>
+        <curve name="/robotNewm/f_d_ext.5" color="#ff7f0e"/>
+       </plot>
+      </DockArea>
+     </DockSplitter>
+    </DockSplitter>
+   </Container>
+  </Tab>
+  <Tab tab_name="tab3" containers="1">
+   <Container>
+    <DockSplitter sizes="0.249799;0.250602;0.249799;0.249799" orientation="-" count="4">
+     <DockSplitter sizes="0.500243;0.499757" orientation="|" count="2">
+      <DockArea name="...">
+       <plot mode="TimeSeries" flip_x="false" flip_y="false" style="Lines">
+        <range left="0.000000" right="69.502109" top="10.993381" bottom="-7.710027"/>
+        <limitY/>
+        <curve name="/robotNewm/tau.0" color="#f14cc1"/>
+       </plot>
+      </DockArea>
+      <DockArea name="...">
+       <plot mode="TimeSeries" flip_x="false" flip_y="false" style="Lines">
+        <range left="0.000000" right="69.502109" top="8.217904" bottom="4.109242"/>
+        <limitY/>
+        <curve name="/robotNewm/tau.1" color="#9467bd"/>
+       </plot>
+      </DockArea>
+     </DockSplitter>
+     <DockArea name="...">
+      <plot mode="TimeSeries" flip_x="false" flip_y="false" style="Lines">
+       <range left="0.000000" right="69.502109" top="12.012824" bottom="-1.368675"/>
+       <limitY/>
+       <curve name="/robotNewm/tau.2" color="#17becf"/>
+      </plot>
+     </DockArea>
+     <DockSplitter sizes="0.502676;0.497324" orientation="|" count="2">
+      <DockArea name="...">
+       <plot mode="TimeSeries" flip_x="false" flip_y="false" style="Lines">
+        <range left="0.000000" right="69.502109" top="-0.190985" bottom="-6.456723"/>
+        <limitY/>
+        <curve name="/robotNewm/tau.3" color="#bcbd22"/>
+       </plot>
+      </DockArea>
+      <DockArea name="...">
+       <plot mode="TimeSeries" flip_x="false" flip_y="false" style="Lines">
+        <range left="0.000000" right="69.502109" top="0.986328" bottom="-0.948642"/>
+        <limitY/>
+        <curve name="/robotNewm/tau.4" color="#1f77b4"/>
+       </plot>
+      </DockArea>
+     </DockSplitter>
+     <DockSplitter sizes="0.502676;0.497324" orientation="|" count="2">
+      <DockArea name="...">
+       <plot mode="TimeSeries" flip_x="false" flip_y="false" style="Lines">
+        <range left="0.000000" right="69.502109" top="-0.088840" bottom="-2.068201"/>
+        <limitY/>
+        <curve name="/robotNewm/tau.5" color="#d62728"/>
+       </plot>
+      </DockArea>
+      <DockArea name="...">
+       <plot mode="TimeSeries" flip_x="false" flip_y="false" style="Lines">
+        <range left="0.000000" right="69.502109" top="0.850963" bottom="-0.704010"/>
+        <limitY/>
+        <curve name="/robotNewm/tau.6" color="#1ac938"/>
+       </plot>
+      </DockArea>
+     </DockSplitter>
+    </DockSplitter>
+   </Container>
+  </Tab>
+  <Tab tab_name="tab2" containers="1">
+   <Container>
+    <DockSplitter sizes="0.500401;0.499599" orientation="-" count="2">
+     <DockArea name="...">
+      <plot mode="TimeSeries" flip_x="false" flip_y="false" style="Lines">
+       <range left="0.000000" right="69.502109" top="1.005562" bottom="0.775978"/>
+       <limitY/>
+       <curve name="/robotNewm/q7" color="#1f77b4"/>
+       <curve name="/robotNewm/qd7" color="#d62728"/>
+      </plot>
+     </DockArea>
+     <DockArea name="...">
+      <plot mode="TimeSeries" flip_x="false" flip_y="false" style="Lines">
+       <range left="0.000000" right="69.502109" top="0.171457" bottom="-0.102384"/>
+       <limitY/>
+       <curve name="/robotNewm/err7" color="#1ac938"/>
+      </plot>
+     </DockArea>
+    </DockSplitter>
+   </Container>
+  </Tab>
+  <Tab tab_name="tab3" containers="1">
+   <Container>
+    <DockSplitter sizes="0.500401;0.499599" orientation="-" count="2">
+     <DockArea name="...">
+      <plot mode="TimeSeries" flip_x="false" flip_y="false" style="Lines">
+       <range left="0.000000" right="69.502109" top="17.814315" bottom="14.732760"/>
+       <limitY/>
+       <curve name="/robotNewm/tank" color="#d62728"/>
+      </plot>
+     </DockArea>
+     <DockArea name="...">
+      <plot mode="TimeSeries" flip_x="false" flip_y="false" style="Lines">
+       <range left="0.000000" right="69.502109" top="17.819127" bottom="14.736556"/>
+       <limitY/>
+       <curve name="/robotNewm/s" color="#1f77b4"/>
+      </plot>
+     </DockArea>
+    </DockSplitter>
+   </Container>
+  </Tab>
+  <Tab tab_name="tab2" containers="1">
+   <Container>
+    <DockSplitter sizes="0.333066;0.333868;0.333066" orientation="-" count="3">
+     <DockArea name="...">
+      <plot mode="TimeSeries" flip_x="false" flip_y="false" style="Lines">
+       <range left="0.000000" right="69.502109" top="1.100000" bottom="0.900000"/>
+       <limitY/>
+       <curve name="/robotNewm/rho_frc" color="#1f77b4"/>
+      </plot>
+     </DockArea>
+     <DockArea name="...">
+      <plot mode="TimeSeries" flip_x="false" flip_y="false" style="Lines">
+       <range left="0.000000" right="69.502109" top="1.100000" bottom="0.900000"/>
+       <limitY/>
+       <curve name="/robotNewm/rho_imp" color="#d62728"/>
+      </plot>
+     </DockArea>
+     <DockArea name="...">
+      <plot mode="TimeSeries" flip_x="false" flip_y="false" style="Lines">
+       <range left="0.000000" right="69.502109" top="0.005672" bottom="-0.009336"/>
+       <limitY/>
+       <curve name="/robotNewm/error_ee" color="#1ac938"/>
+      </plot>
+     </DockArea>
+    </DockSplitter>
+   </Container>
+  </Tab>
+  <currentTabIndex index="6"/>
+ </tabbed_widget>
+ <use_relative_time_offset enabled="1"/>
+ <!-- - - - - - - - - - - - - - - -->
+ <!-- - - - - - - - - - - - - - - -->
+ <Plugins>
+  <plugin ID="DataLoad CSV">
+   <default delimiter="0" time_axis=""/>
+  </plugin>
+  <plugin ID="DataLoad MCAP"/>
+  <plugin ID="DataLoad ROS bags">
+   <use_header_stamp value="false"/>
+   <discard_large_arrays value="true"/>
+   <max_array_size value="100"/>
+   <boolean_strings_to_number value="true"/>
+   <remove_suffix_from_strings value="true"/>
+  </plugin>
+  <plugin ID="DataLoad ULog"/>
+  <plugin ID="ROS Topic Subscriber">
+   <use_header_stamp value="false"/>
+   <discard_large_arrays value="true"/>
+   <max_array_size value="100"/>
+   <boolean_strings_to_number value="true"/>
+   <remove_suffix_from_strings value="true"/>
+  </plugin>
+  <plugin ID="UDP Server"/>
+  <plugin ID="WebSocket Server"/>
+  <plugin ID="ZMQ Subscriber"/>
+  <plugin ID="Fast Fourier Transform"/>
+  <plugin ID="Quaternion to RPY"/>
+  <plugin ID="Reactive Script Editor">
+   <library code="--[[ Helper function to create a series from arrays&#xa;&#xa; new_series: a series previously created with ScatterXY.new(name)&#xa; prefix:     prefix of the timeseries, before the index of the array&#xa; suffix_X:   suffix to complete the name of the series containing the X value. If [nil], use the index of the array.&#xa; suffix_Y:   suffix to complete the name of the series containing the Y value&#xa; timestamp:   usually the tracker_time variable&#xa;              &#xa; Example:&#xa; &#xa; Assuming we have multiple series in the form:&#xa; &#xa;   /trajectory/node.{X}/position/x&#xa;   /trajectory/node.{X}/position/y&#xa;   &#xa; where {N} is the index of the array (integer). We can create a reactive series from the array with:&#xa; &#xa;   new_series = ScatterXY.new(&quot;my_trajectory&quot;) &#xa;   CreateSeriesFromArray( new_series, &quot;/trajectory/node&quot;, &quot;position/x&quot;, &quot;position/y&quot;, tracker_time );&#xa;--]]&#xa;&#xa;function CreateSeriesFromArray( new_series, prefix, suffix_X, suffix_Y, timestamp )&#xa;  &#xa;  --- clear previous values&#xa;  new_series:clear()&#xa;  &#xa;  --- Append points to new_series&#xa;  index = 0&#xa;  while(true) do&#xa;&#xa;    x = index;&#xa;    -- if not nil, get the X coordinate from a series&#xa;    if suffix_X ~= nil then &#xa;      series_x = TimeseriesView.find( string.format( &quot;%s.%d/%s&quot;, prefix, index, suffix_X) )&#xa;      if series_x == nil then break end&#xa;      x = series_x:atTime(timestamp)&#x9; &#xa;    end&#xa;    &#xa;    series_y = TimeseriesView.find( string.format( &quot;%s.%d/%s&quot;, prefix, index, suffix_Y) )&#xa;    if series_y == nil then break end &#xa;    y = series_y:atTime(timestamp)&#xa;    &#xa;    new_series:push_back(x,y)&#xa;    index = index+1&#xa;  end&#xa;end&#xa;&#xa;--[[ Similar to the built-in function GetSeriesNames(), but select only the names with a give prefix. --]]&#xa;&#xa;function GetSeriesNamesByPrefix(prefix)&#xa;  -- GetSeriesNames(9 is a built-in function&#xa;  all_names = GetSeriesNames()&#xa;  filtered_names = {}&#xa;  for i, name in ipairs(all_names)  do&#xa;    -- check the prefix&#xa;    if name:find(prefix, 1, #prefix) then&#xa;      table.insert(filtered_names, name);&#xa;    end&#xa;  end&#xa;  return filtered_names&#xa;end&#xa;&#xa;--[[ Modify an existing series, applying offsets to all their X and Y values&#xa;&#xa; series: an existing timeseries, obtained with TimeseriesView.find(name)&#xa; delta_x: offset to apply to each x value&#xa; delta_y: offset to apply to each y value &#xa;  &#xa;--]]&#xa;&#xa;function ApplyOffsetInPlace(series, delta_x, delta_y)&#xa;  -- use C++ indeces, not Lua indeces&#xa;  for index=0, series:size()-1 do&#xa;    x,y = series:at(index)&#xa;    series:set(index, x + delta_x, y + delta_y)&#xa;  end&#xa;end&#xa;"/>
+   <scripts/>
+  </plugin>
+  <plugin ID="CSV Exporter"/>
+  <plugin ID="ROS /rosout Visualization"/>
+  <plugin ID="ROS Topic Re-Publisher"/>
+ </Plugins>
+ <!-- - - - - - - - - - - - - - - -->
+ <previouslyLoaded_Datafiles/>
+ <previouslyLoaded_Streamer name="ROS Topic Subscriber"/>
+ <!-- - - - - - - - - - - - - - - -->
+ <customMathEquations/>
+ <snippets/>
+ <!-- - - - - - - - - - - - - - - -->
+</root>
+

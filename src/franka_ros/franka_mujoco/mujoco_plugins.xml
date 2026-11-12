@@ -1,0 +1,7 @@
+<library path="lib/libmujoco_impedance_controller">
+  <class name="franka_mujoco/MujocoImpedanceController" type="franka_mujoco::MujocoImpedanceController" base_class_type="controller_interface::ControllerBase">
+    <description>
+      A custom impedance controller for Franka in MuJoCo, fully based on official examples.
+    </description>
+  </class>
+</library>

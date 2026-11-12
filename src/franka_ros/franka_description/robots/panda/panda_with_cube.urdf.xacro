@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<robot name="panda_with_cube" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find franka_description)/robots/panda/panda.urdf.xacro" />
+
+  <link name="draggable_cube_link">
+    <inertial>
+      <origin xyz="0 0 0.05" rpy="0 0 0"/> <mass value="2.0"/> <inertia ixx="0.0033333" ixy="0.0" ixz="0.0" iyy="0.0033333" iyz="0.0" izz="0.0033333"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0.05" rpy="0 0 0"/> <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+      <material name="Red">
+         <color rgba="1.0 0.0 0.0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.25" rpy="0 0 0"/> <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="gripper_to_cube_joint" type="fixed">
+    <parent link="panda_leftfinger"/> <child link="draggable_cube_link"/>
+    <origin xyz="0 0.01 0.05" rpy="0 0 0"/>
+  </joint>
+
+  <gazebo reference="draggable_cube_link">
+    <material>Gazebo/Red</material>
+    <mu1>0.6</mu1> <mu2>0.6</mu2>
+  </gazebo>
+
+</robot>

@@ -1,0 +1,24 @@
+# 这是你未来在 launch 文件里要调用的“真名” (顶格写，不要有空格)
+mujoco_icvs_energy_controller:
+  type: variable_stiffness_controllers/icvs_energy_mujoco
+  
+  arm_id: panda
+  joint_names:
+    - panda_joint1
+    - panda_joint2
+    - panda_joint3
+    - panda_joint4
+    - panda_joint5
+    - panda_joint6
+    - panda_joint7
+    
+  # 下面是你算法里需要的全部数学参数
+  sigma: 1.0
+  xt: 5.0
+  kc: 600.0
+  kt: 0.0
+  ktmax: 1000.0
+  ktmin: 10.0
+  min_tank_level: 2.0
+  max_tank_level: 100.0
+  lambda: 0.001

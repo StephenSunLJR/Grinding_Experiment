@@ -1,0 +1,14 @@
+build/
+build_diagnostics/
+devel/
+devel_diagnostics/
+install/
+logs/
+ruckig/build_local/
+ruckig_install/
+.catkin_tools/
+.vscode/
+*.bag
+__pycache__/
+*.pyc
+src/variable_stiffness_controllers/src/auto_claude.py

@@ -1,0 +1,33 @@
+hps_wrench_publisher:
+  sensor_ip: 172.16.0.3
+  sensor_port: 8080
+  publish_rate: 250.0
+  output_topic: /ft_sensor/wrench
+
+  # The published wrench is shifted to the model end-effector origin and is
+  # expressed in its axes. The controller rotates it into panda_link0 using
+  # the current Franka O_T_EE transform every control period.
+  output_frame: panda_EE
+
+  # Only enable this while the sensor is unloaded and the robot is stationary.
+  zero_on_start: true
+
+  # Disabled by default because the migrated vendor wrapper contains tool-load
+  # values specific to the previous installation.
+  configure_sensor: false
+
+  # Low-pass recursion: filtered = alpha*new + (1-alpha)*previous.
+  filter_alpha: 0.8
+
+  # Static transform from the end-effector origin E to sensor origin S.
+  # p_E_S is in metres; rpy defines R_E_S using Rz(yaw)Ry(pitch)Rx(roll).
+  # Defaults reproduce calisensor_gpt.cpp and MUST be checked against the
+  # actual mechanical installation before enabling torque control.
+  ee_to_sensor_translation: [0.0, 0.0, 0.03]
+  ee_to_sensor_rpy: [0.0, 3.141592653589793, 2.356194490192345]
+  # Applied in the raw sensor axes before the rigid wrench transformation.
+  raw_wrench_bias: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  raw_wrench_scale: [1.0, 1.0, -1.0, 1.0, 1.0, 1.0]
+
+  # Separate per-axis deadbands; zero avoids distorting energy measurements.
+  output_deadband: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]

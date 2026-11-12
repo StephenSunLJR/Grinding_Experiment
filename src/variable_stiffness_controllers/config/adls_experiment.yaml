@@ -1,0 +1,68 @@
+# A-DLS Controller Configuration
+# Paper: "各向异性自适应任务分级与柔顺控制" v5.10
+# Experiment: Direction-selective compliance validation
+
+# ── Controller registration ──
+ADLSController:
+    type: variable_stiffness_controllers/ADLSController
+    arm_id: panda
+    joint_names:
+        - panda_joint1
+        - panda_joint2
+        - panda_joint3
+        - panda_joint4
+        - panda_joint5
+        - panda_joint6
+        - panda_joint7
+
+    # ── Method selection ──
+    # M1: Moore-Penrose (strict priority)
+    # M2: Scalar DLS
+    # M3: Moore-Penrose + nullspace compliance
+    # M4: A-DLS (proposed, default)
+    method: "M4"
+
+    # ── GMO Observer gains (§2 Eq 2.9) ──
+    K_O: [40.0, 40.0, 40.0, 30.0, 25.0, 20.0, 20.0]
+
+    # ── FDI阈值 (§3.1, Eq 3.2) ──
+    # v5.13: 改用理想JTS真值外力矩(无模型失配) → 阈值回到理论设计的
+    # 传感器噪声量级(0.3-0.5 N·m), 不再需要为Gazebo模型失配抬高。
+    tau_th_base: [0.5, 0.5, 0.5, 0.5, 0.3, 0.3, 0.3]
+
+    # ── α_th噪声上界 (§3.3, Eq 3.7a + §6.2共用) ──
+    # v5.13: 理想JTS真值无噪声, 取JTS数据手册量级的传感器噪声上界(§2.4)。
+    # 原[3,10,4,6,...]是为对抗Gazebo模型失配, 现已无此干扰源。
+    r_noise: [0.5, 0.5, 0.5, 0.5, 0.3, 0.3, 0.3]
+
+    # ── DLS damping bounds (§4.2.3) ──
+    lambda2_base: 0.0001    # Numerical safeguard only
+    lambda2_max: 0.1        # Max compliance damping (0.5 causes cascade in Gazebo)
+
+    # ── v5.12: Cartesian force-driven β (§6.1.1, Eq 6.1a-2) ──
+    F_th: 2.0               # [N] Per-direction force noise threshold
+    F_max: 40.0             # [N] Full-scale force at which β saturates to 1
+
+    # ── v6.1: 有界柔顺退让预算 (§6.1.1, Eq 6.1b) [位置 m / 姿态 rad] ──
+    delta_budget: [0.02, 0.02, 0.02, 0.1, 0.1, 0.1]
+
+    # ── Asymmetric EMA (§4.5 Eq 4.19a) ──
+    gamma_attack: 0.3       # Attack EMA (~3ms at 1kHz, reduced from 0.5 to suppress chattering)
+    gamma_decay: 0.02       # Slow recovery (~50ms at 1kHz)
+
+    # ── Weight function steepness (§4.2.3) ──
+    beta_w: 10.0
+    beta_c: 10.0
+
+    # ── Experiment scenario parameters ──
+    force_start_time: 3.0   # [s] When collision starts
+    force_end_time: 5.0     # [s] When collision ends
+    force_ramp_time: 0.2    # [s] Force ramp duration
+    force_magnitude: 25.0   # [N] External force magnitude
+    force_direction: 2      # 0=X, 1=Y, 2=Z (downward)
+
+    # ── Trajectory parameters ──
+    # Set circle_radius: 0.0 for STATIC HOLD MODE (model-mismatch diagnostic)
+    # Set circle_radius: 0.05 for normal experiment (φ100mm circle)
+    circle_radius: 0.0      # [m] DIAGNOSTIC: hold initial pose, no motion
+    circle_period: 5.0      # [s] One full circle

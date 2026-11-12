@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>hps_ft_sensor</name>
+  <version>0.1.0</version>
+  <description>ROS driver and WrenchStamped publisher for the HPS six-axis F/T sensor.</description>
+
+  <maintainer email="xiaomeng@todo.todo">xiaomeng</maintainer>
+  <license>Proprietary vendor SDK; project wrapper license unspecified</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>geometry_msgs</depend>
+  <depend>roscpp</depend>
+  <depend>eigen</depend>
+</package>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="robot_ip" default="172.16.0.2"/>
+  <arg name="load_gripper" default="true"/>
+  <arg name="arm_id" default="panda"/>
+  <arg name="start_ft_sensor" default="true"/>
+  <arg name="ft_sensor_config"
+       default="$(find hps_ft_sensor)/config/hps_ft_sensor.yaml"/>
+
+  <include file="$(find franka_control)/launch/franka_control.launch">
+    <arg name="robot_ip" value="$(arg robot_ip)"/>
+    <arg name="load_gripper" value="$(arg load_gripper)"/>
+  </include>
+
+  <include if="$(arg start_ft_sensor)"
+           file="$(find hps_ft_sensor)/launch/hps_ft_sensor.launch">
+    <arg name="config_file" value="$(arg ft_sensor_config)"/>
+  </include>
+
+  <rosparam command="load"
+            file="$(find variable_stiffness_controllers)/config/bidirectional_energy_flow_control.yaml"/>
+  <param name="bidirectional_energy_flow_control/arm_id" value="$(arg arm_id)"/>
+
+  <node name="bidirectional_diagnostics_recorder" pkg="variable_stiffness_controllers"
+        type="record_bidirectional_diagnostics.py" output="screen"/>
+
+  <!-- Load only: verify sensor mount transform, sign, bias, and gains first. -->
+  <node name="bidirectional_energy_flow_control_spawner"
+        pkg="controller_manager"
+        type="spawner"
+        output="screen"
+        args="--stopped bidirectional_energy_flow_control"/>
+</launch>

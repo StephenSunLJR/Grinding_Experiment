@@ -1,0 +1,62 @@
+# This example shows the usage of intermediate waypoints.
+# It will only work with Ruckig Pro or enabled cloud API (e.g. default when installed by pip / PyPI).
+
+from copy import copy
+
+from ruckig import InputParameter, OutputParameter, Result, Ruckig
+
+
+if __name__ == '__main__':
+    degrees_of_freedom = 3
+    control_cycle = 0.01
+    max_number_of_waypoints = 10  # for memory allocation
+
+    # Create instances: Ruckig as well as input and output parameters
+    ruckig = Ruckig(degrees_of_freedom, control_cycle, max_number_of_waypoints)
+    inp = InputParameter(degrees_of_freedom)
+    out = OutputParameter(degrees_of_freedom, max_number_of_waypoints)
+
+    inp.current_position = [0.2, 0, -0.3]
+    inp.current_velocity = [0, 0.2, 0]
+    inp.current_acceleration = [0, 0.6, 0]
+
+    inp.intermediate_positions = [
+        [1.4, -1.6, 1.0],
+        [-0.6, -0.5, 0.4],
+        [-0.4, -0.35, 0.0],
+        [0.8, 1.8, -0.1],
+    ]
+
+    inp.target_position = [0.5, 1, 0]
+    inp.target_velocity = [0.2, 0, 0.3]
+    inp.target_acceleration = [0, 0.1, -0.1]
+
+    inp.max_velocity = [1, 2, 1]
+    inp.max_acceleration = [3, 2, 2]
+    inp.max_jerk = [6, 10, 20]
+
+    print('\t'.join(['t'] + [str(i) for i in range(ruckig.degrees_of_freedom)]))
+
+    # Generate the trajectory within the control loop
+    first_output, out_list = None, []
+    res = Result.Working
+    while res == Result.Working:
+        res = ruckig.update(inp, out)
+
+        print('\t'.join([f'{out.time:0.3f}'] + [f'{p:0.3f}' for p in out.new_position]))
+        out_list.append(copy(out))
+
+        out.pass_to_input(inp)
+
+        if not first_output:
+            first_output = copy(out)
+
+    print(f'Calculation duration: {first_output.calculation_duration:0.1f} [µs]')
+    print(f'Trajectory duration: {first_output.trajectory.duration:0.4f} [s]')
+
+    # Plot the trajectory
+    # from pathlib import Path
+    # from plotter import Plotter
+
+    # examples_path = Path(__file__).parent.absolute()
+    # Plotter.plot_trajectory(examples_path / '03_trajectory.pdf', ruckig, inp, out_list, plot_jerk=False)

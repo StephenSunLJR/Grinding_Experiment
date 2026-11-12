@@ -1,0 +1,28 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/lab306/test/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/lab306/test/src/example/include/**",
+        "/home/lab306/test/src/franka_ros/franka_control/include/**",
+        "/home/lab306/test/src/franka_ros/franka_example_controllers/include/**",
+        "/home/lab306/test/src/franka_ros/franka_gazebo/include/**",
+        "/home/lab306/test/src/franka_ros/franka_gripper/include/**",
+        "/home/lab306/test/src/franka_ros/franka_hw/include/**",
+        "/home/lab306/test/src/sim/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

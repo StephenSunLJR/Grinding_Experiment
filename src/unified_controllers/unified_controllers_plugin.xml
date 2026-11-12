@@ -1,0 +1,27 @@
+<library path="lib/libunified_controllers">
+  <class name="unified_controllers/UnifiedController" type="unified_controllers::UnifiedController" base_class_type="controller_interface::ControllerBase">
+    <description>
+      A unified_controllers Passive Interaction control with Dynamical Systems. 
+    </description>
+  </class>
+  <class name="unified_controllers/PrintPose" type="unified_controllers::PrintPose" base_class_type="controller_interface::ControllerBase">
+    <description>
+      A unified_controllers PrintPose control with Dynamical Systems. 
+    </description>
+  </class>
+  <class name="unified_controllers/MoveToPosition" type="unified_controllers::MoveToPosition" base_class_type="controller_interface::ControllerBase">
+    <description>
+      A unified_controllers Passive Interaction control with Dynamical Systems. 
+    </description>
+  </class>
+  <class name="unified_controllers/PowerUnifiedController" type="unified_controllers::PowerUnifiedController" base_class_type="controller_interface::ControllerBase">
+    <description>
+      A unified_controllers Passive Interaction control with Dynamical Systems. 
+    </description>
+  </class>
+  <class name="unified_controllers/UnifiedComparedController" type="unified_controllers::UnifiedComparedController" base_class_type="controller_interface::ControllerBase">
+    <description>
+      A unified_controllers Passive Interaction control with Dynamical Systems. 
+    </description>
+  </class>
+</library>

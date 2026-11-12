@@ -1,0 +1,16 @@
+# 1. 关节状态发布器 (必须有，用于让 RViz 知道机器人的实时姿态)
+joint_state_controller:
+  type: joint_state_controller/JointStateController
+  publish_rate: 50
+
+# 2. 你的专属版官方阻抗控制器 (复刻了 Franka 官方的刚度和阻尼算法)
+mujoco_impedance_controller:
+  type: franka_mujoco/MujocoImpedanceController
+  joints:
+    - panda_joint1
+    - panda_joint2
+    - panda_joint3
+    - panda_joint4
+    - panda_joint5
+    - panda_joint6
+    - panda_joint7

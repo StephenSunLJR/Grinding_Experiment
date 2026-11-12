@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<!--
+  A-DLS Experiment Launch File
+  Launches Gazebo + Franka Panda + ADLSController
+
+  Usage:
+    # Experiment 1: Directional selectivity (M4, default params)
+    roslaunch variable_stiffness_controllers adls_experiment.launch
+
+    # Experiment 2A: Pareto frontier (run with different force_magnitude values)
+    roslaunch variable_stiffness_controllers adls_experiment.launch force_magnitude:=10
+
+    # Experiment 2B: Slingshot effect (use C1-C4 configs)
+    roslaunch variable_stiffness_controllers adls_experiment.launch method:="M4"
+
+    # Experiment 3B: Singularity (no external force)
+    roslaunch variable_stiffness_controllers adls_experiment.launch force_magnitude:=0
+-->
+<launch>
+  <!-- ── Robot configuration ── -->
+  <arg name="arm_id"          default="panda" />
+  <arg name="use_gripper"     default="false" />
+  <arg name="headless"        default="false" />
+  <arg name="world"           default="worlds/empty.world" />
+
+  <!-- ── Controller parameters ── -->
+  <arg name="method"            default="M4" />
+  <arg name="force_magnitude"   default="40.0" />
+  <arg name="force_direction"   default="2" />
+  <arg name="force_direction2"  default="-1" />   <!-- >=0: 与 force_direction 合成 45° 斜向力 -->
+
+  <arg name="force_start_time"  default="3.0" />
+  <arg name="force_end_time"    default="5.0" />
+  <arg name="force_link"        default="link7" />  <!-- 接触连杆: link7(末端)/link4(前臂)/link2(大臂) -->
+  <arg name="lambda2_max"       default="0.1" />  <!-- match code default; 0.5 causes cascade -->
+  <arg name="circle_radius"     default="0.0" />  <!-- 0 = static hold (diag mode) -->
+  <arg name="circle_period"     default="5.0" />
+
+  <!-- ── Experiment 2B ablation switches ── -->
+  <arg name="ema_mode"       default="asymmetric" />  <!-- none / symmetric / asymmetric -->
+  <arg name="ref_modulation" default="true" />
+  <arg name="secondary_task" default="false" />  <!-- 零空间次级姿态任务(验证两级任务分级) -->
+
+  <!-- ── Experiment 3B singularity trajectory ── -->
+  <arg name="traj_mode"        default="circle" />    <!-- circle / extend -->
+  <arg name="extend_distance"  default="0.50" />
+
+  <!-- ── Launch Gazebo + Franka ── -->
+  <include file="$(find franka_gazebo)/launch/panda.launch">
+    <arg name="arm_id"     value="$(arg arm_id)" />
+    <arg name="use_gripper" value="$(arg use_gripper)" />
+    <arg name="headless"   value="$(arg headless)" />
+    <arg name="world"      value="$(arg world)" />
+    <arg name="controller" value="" />
+    <arg name="rviz"       value="false" />
+  </include>
+
+  <!-- ── Load A-DLS controller config ── -->
+  <rosparam command="load" file="$(find variable_stiffness_controllers)/config/adls_experiment.yaml" />
+
+  <!-- Override from command-line args -->
+  <rosparam param="ADLSController/method"            subst_value="True">$(arg method)</rosparam>
+  <rosparam param="ADLSController/force_magnitude"   subst_value="True">$(arg force_magnitude)</rosparam>
+  <rosparam param="ADLSController/force_direction"   subst_value="True">$(arg force_direction)</rosparam>
+  <rosparam param="ADLSController/force_direction2"  subst_value="True">$(arg force_direction2)</rosparam>
+  <rosparam param="ADLSController/force_start_time"  subst_value="True">$(arg force_start_time)</rosparam>
+  <rosparam param="ADLSController/force_end_time"    subst_value="True">$(arg force_end_time)</rosparam>
+  <rosparam param="ADLSController/lambda2_max"       subst_value="True">$(arg lambda2_max)</rosparam>
+  <rosparam param="ADLSController/circle_radius"     subst_value="True">$(arg circle_radius)</rosparam>
+  <rosparam param="ADLSController/circle_period"     subst_value="True">$(arg circle_period)</rosparam>
+  <rosparam param="ADLSController/ema_mode"          subst_value="True">$(arg ema_mode)</rosparam>
+  <rosparam param="ADLSController/ref_modulation"    subst_value="True">$(arg ref_modulation)</rosparam>
+  <rosparam param="ADLSController/secondary_task"    subst_value="True">$(arg secondary_task)</rosparam>
+  <rosparam param="ADLSController/traj_mode"         subst_value="True">$(arg traj_mode)</rosparam>
+  <rosparam param="ADLSController/extend_distance"   subst_value="True">$(arg extend_distance)</rosparam>
+
+  <!-- ── Spawn ADLSController ── -->
+  <node name="adls_controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen"
+        args="--wait-for initialized franka_state_controller ADLSController" />
+
+  <!-- ── External Force Injector (real Gazebo physics, NOT virtual) ── -->
+  <!-- Calls /gazebo/apply_body_wrench to inject force on panda_link7 -->
+  <arg name="inject_force" default="true" />
+  <node if="$(arg inject_force)"
+        name="adls_force_injector"
+        pkg="variable_stiffness_controllers"
+        type="force_injector.py"
+        output="screen">
+    <param name="start_time"   value="$(arg force_start_time)" />
+    <param name="end_time"     value="$(arg force_end_time)" />
+    <param name="magnitude"    value="$(arg force_magnitude)" />
+    <param name="direction"    value="$(arg force_direction)" />
+    <param name="direction2"   value="$(arg force_direction2)" />
+    <param name="body_name"    value="$(arg arm_id)::$(arg arm_id)_$(arg force_link)" />
+    <param name="ramp_time"    value="0.2" />
+    <param name="rate"         value="25.0" />
+  </node>
+
+  <!-- ── Optional: real-time visualization dashboard ── -->
+  <arg name="live_dashboard" default="false" />
+  <node if="$(arg live_dashboard)"
+        name="adls_live_dashboard"
+        pkg="variable_stiffness_controllers"
+        type="live_dashboard.py"
+        output="screen" />
+
+  <!-- ── Optional: record diagnostics ── -->
+  <!--
+  <node pkg="rosbag" type="record" name="adls_recorder"
+        args="record -O /tmp/adls_experiment.bag /adls/diagnostics /franka_state_controller/franka_states" />
+  -->
+</launch>
